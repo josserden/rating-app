@@ -1,0 +1,15 @@
+.icon {
+  @apply h-5 w-5 fill-current;
+}
+
+.filled svg {
+  @apply text-blue-700;
+}
+
+.star {
+  @apply text-gray-200;
+}
+
+.editable {
+  cursor: pointer;
+}

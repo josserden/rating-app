@@ -1,0 +1,7 @@
+.footer {
+  @apply grid grid-cols-[1fr] gap-2 bg-blue-900 py-8 px-6 md:grid-cols-[_1fr,auto,auto] xl:gap-10;
+}
+
+.footerText {
+  @apply text-center text-slate-50 md:text-left;
+}

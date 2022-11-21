@@ -1,0 +1,3 @@
+.logo {
+  @apply font-cursive text-4xl leading-10 text-blue-900;
+}

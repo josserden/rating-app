@@ -1,0 +1,11 @@
+.icon {
+  @apply inline-block h-6 w-6 text-stone-500;
+}
+
+.close {
+  @apply hidden;
+}
+
+.open {
+  @apply flex flex-col gap-2 px-2 text-blue-700;
+}

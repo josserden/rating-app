@@ -1,0 +1,35 @@
+.tag {
+  @apply inline-block rounded-[20px];
+}
+
+.sm {
+  @apply px-3 py-2 text-xs leading-3;
+}
+
+.md {
+  @apply px-3 py-2 text-sm leading-3;
+}
+
+.ghost {
+  @apply border border-zinc-200 font-medium;
+}
+
+.red {
+  @apply bg-red-600 font-semibold text-slate-50;
+}
+
+.grey {
+  @apply bg-blue-200 font-semibold text-slate-50;
+}
+
+.green {
+  @apply bg-green-100 font-semibold text-green-700;
+}
+
+.primary {
+  @apply border border-blue-700 bg-none font-medium text-blue-700;
+}
+
+.link {
+  @apply transition-all hover:bg-blue-700 hover:text-slate-50 focus:bg-blue-700 focus:text-slate-50;
+}

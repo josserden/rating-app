@@ -1,0 +1,15 @@
+.paragraph {
+  @apply font-normal text-slate-900;
+}
+
+.sm {
+  @apply text-sm leading-6;
+}
+
+.md {
+  @apply text-base leading-6;
+}
+
+.xl {
+  @apply text-lg leading-7;
+}
