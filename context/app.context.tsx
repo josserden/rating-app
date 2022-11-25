@@ -19,12 +19,15 @@ export const AppContextProvider = ({
   children,
 }: PropsWithChildren<IAppContext>): JSX.Element => {
   const [menuState, setMenuState] = useState<MenuItem[]>(menu);
+
   const setMenu = (newMenu: MenuItem[]) => {
     setMenuState(newMenu);
   };
 
   return (
-    <AppContext.Provider value={{ menu: menuState, firstCategory, setMenu }}>
+    <AppContext.Provider
+      value={{ menu: menuState ?? menu, firstCategory, setMenu }}
+    >
       {children}
     </AppContext.Provider>
   );

@@ -20,6 +20,13 @@ export interface HhData {
   _id: string;
 }
 
+export interface Data {
+  count: number;
+  juniorSalary: number;
+  middleSalary: number;
+  seniorSalary: number;
+}
+
 export interface Blog {
   h1: string;
   metaTitle: string;

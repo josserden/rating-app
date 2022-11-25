@@ -56,32 +56,33 @@ export const Menu = (): JSX.Element => {
   const buildSecondLevel = (menuItem: FirstLevelMenu) => {
     return (
       <ul className="ml-3 flex flex-col gap-5 border-l-2 border-gray-300 px-3">
-        {menu.map((item) => {
-          const conditionForOpenMenu = item.pages
-            .map(({ alias }) => alias)
-            .includes(router.asPath.split('/')[2]);
+        {menu &&
+          menu.map((item) => {
+            const conditionForOpenMenu = item.pages
+              .map(({ alias }) => alias)
+              .includes(router.asPath.split('/')[2]);
 
-          if (conditionForOpenMenu) item.isOpened = conditionForOpenMenu;
+            if (conditionForOpenMenu) item.isOpened = conditionForOpenMenu;
 
-          return (
-            <li key={item._id.secondCategory}>
-              <button
-                className="text-xs font-light uppercase leading-5 text-gray-700"
-                onClick={() => openSecondLevel(item._id.secondCategory)}
-              >
-                {item._id.secondCategory}
-              </button>
+            return (
+              <li key={item._id.secondCategory}>
+                <button
+                  className="text-xs font-light uppercase leading-5 text-gray-700"
+                  onClick={() => openSecondLevel(item._id.secondCategory)}
+                >
+                  {item._id.secondCategory}
+                </button>
 
-              <ul
-                className={classNames(
-                  item.isOpened ? styles.open : styles.close
-                )}
-              >
-                {buildThirdLevel(item.pages, menuItem.route)}
-              </ul>
-            </li>
-          );
-        })}
+                <ul
+                  className={classNames(
+                    item.isOpened ? styles.open : styles.close
+                  )}
+                >
+                  {buildThirdLevel(item.pages, menuItem.route)}
+                </ul>
+              </li>
+            );
+          })}
       </ul>
     );
   };
@@ -89,23 +90,24 @@ export const Menu = (): JSX.Element => {
   const buildThirdLevel = (pages: PageItem[], route: string) => {
     return (
       <>
-        {pages.map((page) => (
-          <li key={page.category}>
-            <Link href={`/${route}/${page.alias}`}>
-              <a
-                className={classNames(
-                  'text-sm font-medium leading-5 text-stone-600 transition-colors hover:text-blue-700 focus:text-blue-700',
-                  {
-                    ['!text-blue-700']:
-                      `/${route}/${page.alias}` == router.asPath,
-                  }
-                )}
-              >
-                {page.category}
-              </a>
-            </Link>
-          </li>
-        ))}
+        {pages &&
+          pages.map((page) => (
+            <li key={page.category}>
+              <Link href={`/${route}/${page.alias}`}>
+                <a
+                  className={classNames(
+                    'text-sm font-medium leading-5 text-stone-600 transition-colors hover:text-blue-700 focus:text-blue-700',
+                    {
+                      ['!text-blue-700']:
+                        `/${route}/${page.alias}` == router.asPath,
+                    }
+                  )}
+                >
+                  {page.category}
+                </a>
+              </Link>
+            </li>
+          ))}
       </>
     );
   };

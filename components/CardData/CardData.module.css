@@ -1,0 +1,7 @@
+.card {
+  @apply rounded bg-slate-50 shadow-md;
+}
+
+.blue {
+  @apply bg-slate-300;
+}

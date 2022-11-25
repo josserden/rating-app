@@ -19,7 +19,7 @@
 }
 
 .grey {
-  @apply bg-blue-200 font-semibold text-slate-50;
+  @apply bg-gray-400 font-semibold text-slate-50;
 }
 
 .green {

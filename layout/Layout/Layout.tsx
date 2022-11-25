@@ -10,7 +10,7 @@ import { LayoutProps } from './Layout.props';
 const Layout = ({ children }: LayoutProps): JSX.Element => {
   return (
     <div className="grid min-h-screen grid-cols-sm grid-rows-sm grid-areas-sm md:grid-cols-md md:grid-rows-md md:grid-areas-md">
-      <Header className="grid-in-header" />
+      <Header className="grid-in-header md:hidden" />
 
       <Sidebar
         className={

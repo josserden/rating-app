@@ -12,7 +12,7 @@ export const Sidebar = ({ className, ...props }: SidebarProps): JSX.Element => {
       <div className="relative shadow-md">
         <input
           type="text"
-          className="w-full rounded-md border-none pl-4 pr-1 text-neutral-600 placeholder:text-neutral-400"
+          className="w-full rounded-md border-none pl-4 pr-1 text-neutral-600 placeholder:text-neutral-400 focus:outline-none focus-visible:ring-2"
           id="search"
           placeholder="Search ..."
         />

@@ -9,9 +9,11 @@ export const Footer = ({ className, ...props }: FooterProps): JSX.Element => {
       <Paragraph className={styles.footerText}>
         RatingApp © 2020 - {new Date().getFullYear()} Все права защищены
       </Paragraph>
+
       <Paragraph className={styles.footerText}>
         Пользовательское соглашение
       </Paragraph>
+
       <Paragraph className={styles.footerText}>
         Политика конфиденциальности
       </Paragraph>

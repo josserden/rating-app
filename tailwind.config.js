@@ -6,6 +6,7 @@ module.exports = {
     './pages/**/*.{js,ts,jsx,tsx}',
     './components/**/*.{js,ts,jsx,tsx}',
     './layout/**/*.{js,ts,jsx,tsx}',
+    './page-component/**/*.{js,ts,jsx,tsx}',
   ],
   darkMode: 'media',
   theme: {
@@ -44,11 +45,7 @@ module.exports = {
 
       gridTemplateAreas: {
         sm: ['header', 'body', 'footer'],
-        md: [
-          '. sidebar header .',
-          '. sidebar body .',
-          'footer footer footer footer',
-        ],
+        md: ['. sidebar body .', 'footer footer footer footer'],
       },
 
       gridTemplateColumns: {

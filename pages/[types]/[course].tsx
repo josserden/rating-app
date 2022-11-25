@@ -9,15 +9,22 @@ import type {
   GetStaticProps,
   GetStaticPropsContext,
 } from 'next';
+import { RatingPageComponent } from 'page-component';
 import { ParsedUrlQuery } from 'querystring';
 
 axios.defaults.baseURL = process.env.NEXT_PUBLIC_DOMAIN;
 
-const Course = ({ page, products }: CourseProps) => {
-  return <>{products && products.length}</>;
+const RatingPage = ({ firstCategory, page, products }: RatingPageProps) => {
+  return (
+    <RatingPageComponent
+      firstCategory={firstCategory}
+      page={page}
+      products={products}
+    />
+  );
 };
 
-export default withLayout(Course);
+export default withLayout(RatingPage);
 
 export const getStaticPaths: GetStaticPaths = async () => {
   let paths: string[] = [];
@@ -41,7 +48,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-export const getStaticProps: GetStaticProps<CourseProps> = async ({
+export const getStaticProps: GetStaticProps<RatingPageProps> = async ({
   params,
 }: GetStaticPropsContext<ParsedUrlQuery>) => {
   if (!params) {
@@ -96,7 +103,7 @@ export const getStaticProps: GetStaticProps<CourseProps> = async ({
   }
 };
 
-interface CourseProps extends Record<string, unknown> {
+interface RatingPageProps extends Record<string, unknown> {
   menu: MenuItem[];
   firstCategory: TopLevelCategory;
   page: TopPageModel;
