@@ -1,8 +1,7 @@
-import classNames from 'classnames';
-import { CardDataProps } from './CardData.props';
-import styles from './CarData.module.css';
-import { Card } from '..';
 import { StarIcon } from '@heroicons/react/24/solid';
+import { convertPrice } from 'helpers/convertPrice';
+import { Card } from '..';
+import { CardDataProps } from './CardData.props';
 
 export const CardData = ({
   count,
@@ -19,11 +18,11 @@ export const CardData = ({
         </span>
       </Card>
 
-      <Card className="grid divide-y px-32 md:grid-cols-3 md:divide-x md:divide-y-0 md:px-0">
+      <Card className="grid divide-y md:grid-cols-3 md:divide-x md:divide-y-0 md:px-0">
         <div className="flex flex-col items-center px-6 py-6 md:gap-3 md:py-0">
           <span className="font-light text-gray-700">Начальный</span>
           <span className=" text-[26px] font-bold leading-9 text-gray-800">
-            {juniorSalary}
+            {convertPrice(juniorSalary)}
           </span>
           <div className="flex justify-center gap-1 text-gray-400">
             <StarIcon className="h-5 w-5 fill-amber-500" />
@@ -35,7 +34,7 @@ export const CardData = ({
         <div className="flex flex-col items-center px-6 py-6 md:gap-3 md:py-0">
           <span className="font-light text-gray-700">Средний</span>
           <span className=" text-[26px] font-bold leading-9 text-gray-800">
-            {middleSalary}
+            {convertPrice(middleSalary)}
           </span>
 
           <div className="flex justify-center gap-1 text-gray-400">
@@ -48,7 +47,7 @@ export const CardData = ({
         <div className="flex flex-col items-center px-6 py-6 md:gap-3 md:py-0">
           <span className="font-light text-gray-700">Профессионал</span>
           <span className=" text-[26px] font-bold leading-9 text-gray-800">
-            {seniorSalary}
+            {convertPrice(seniorSalary)}
           </span>
 
           <div className="flex justify-center gap-1 text-gray-400">

@@ -14,11 +14,11 @@ const Layout = ({ children }: LayoutProps): JSX.Element => {
 
       <Sidebar
         className={
-          'hidden flex-col gap-6 py-8 pr-7 pl-6 grid-in-sidebar md:flex'
+          'hidden min-h-full flex-col gap-6 py-8 pr-7 pl-6 grid-in-sidebar md:flex'
         }
       />
 
-      <div className="grid-in-body">{children}</div>
+      <main className="p-8 grid-in-body">{children}</main>
 
       <Footer className="grid-in-footer" />
     </div>

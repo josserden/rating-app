@@ -1,4 +1,10 @@
-import { CardData, Heading, Tag } from '@components/index';
+import {
+  Advantages,
+  CardData,
+  Heading,
+  Paragraph,
+  Tag,
+} from '@components/index';
 import { TopLevelCategory } from 'interfaces/course.interface';
 import React from 'react';
 import { RatingPageProps } from './RatingPageComponent.props';
@@ -9,7 +15,7 @@ export const RatingPageComponent = ({
   firstCategory,
 }: RatingPageProps): JSX.Element => {
   return (
-    <div className="px-8">
+    <>
       <header className="grid grid-cols-[auto_1fr_auto] items-center justify-items-start gap-5">
         {page && <Heading tag="h1">{page.title}</Heading>}
         {products && (
@@ -38,7 +44,38 @@ export const RatingPageComponent = ({
         <span>Сортировка</span>
       </div>
 
-      {firstCategory == TopLevelCategory.Courses && <CardData {...page.hh} />}
-    </div>
+      {firstCategory == TopLevelCategory.Courses && page.hh && (
+        <CardData {...page.hh} />
+      )}
+
+      {page?.advantages && page.advantages.length > 0 && (
+        <>
+          <Heading tag="h2" className="mt-12">
+            Преимущества
+          </Heading>
+
+          <Advantages advantages={page.advantages} />
+        </>
+      )}
+
+      {page.seoText && (
+        <div
+          className="prose max-w-none pl-7 pt-10 font-light text-gray-700 prose-headings:mt-5"
+          dangerouslySetInnerHTML={{ __html: page.seoText }}
+        />
+      )}
+
+      <Heading tag="h2" className="mt-12">
+        Получаемые навыки
+      </Heading>
+
+      <div className="inline-flex gap-2">
+        {page.tags.map((tag) => (
+          <Tag key={tag} color="primary">
+            {tag}
+          </Tag>
+        ))}
+      </div>
+    </>
   );
 };

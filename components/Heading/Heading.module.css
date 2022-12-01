@@ -3,7 +3,7 @@
 }
 
 .h2 {
-  @apply text-[22px] font-medium leading-[30px];
+  @apply mb-6 text-[22px] font-medium leading-[30px];
 }
 
 .h3 {
