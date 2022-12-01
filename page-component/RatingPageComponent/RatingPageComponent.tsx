@@ -1,10 +1,4 @@
-import {
-  Advantages,
-  CardData,
-  Heading,
-  Paragraph,
-  Tag,
-} from '@components/index';
+import { Advantages, CardData, Heading, Tag } from '@components/index';
 import { TopLevelCategory } from 'interfaces/course.interface';
 import React from 'react';
 import { RatingPageProps } from './RatingPageComponent.props';
