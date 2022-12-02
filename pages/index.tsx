@@ -1,7 +1,15 @@
 import { withLayout } from 'layout/Layout/Layout';
 import type { GetStaticProps } from 'next';
 import { useState } from 'react';
-import { Button, Heading, Paragraph, Rating, Tag } from '../components';
+import {
+  Button,
+  Heading,
+  Input,
+  Paragraph,
+  Rating,
+  Tag,
+  TextArea,
+} from '../components';
 import axios, { AxiosResponse } from 'axios';
 import { MenuItem } from 'interfaces/menu.interface';
 
@@ -15,6 +23,10 @@ const Home = ({ menu, firstCategory }: HomeProps): JSX.Element => {
       <Heading tag="h1" className="mb-5">
         Курсы по Photoshop
       </Heading>
+
+      <Input id="name" placeholder="Name" />
+      <Input id="title" placeholder="Title" />
+      <TextArea placeholder="Enter your feedback" />
 
       <Heading tag="h3">Профессия дизайнер от 0 до PRO</Heading>
 

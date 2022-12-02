@@ -20,7 +20,7 @@ const Layout = ({ children }: LayoutProps): JSX.Element => {
 
       <main className="p-8 grid-in-body">{children}</main>
 
-      <Footer className="grid-in-footer" />
+      <Footer className="mt-auto grid-in-footer" />
     </div>
   );
 };
