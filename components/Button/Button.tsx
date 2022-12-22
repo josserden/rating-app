@@ -15,7 +15,7 @@ export const Button = ({
       className={classNames(styles.button, className, {
         [styles.primary]: appearance == 'primary',
         [styles.ghost]: appearance == 'ghost',
-        ['flex items-center gap-2']: arrow != 'none',
+        [styles.hasIcon]: arrow != 'none',
       })}
       {...props}
     >
@@ -24,7 +24,7 @@ export const Button = ({
       {arrow != 'none' && (
         <ChevronRightIcon
           className={classNames(styles.icon, className, {
-            ['rotate-90']: arrow == 'down',
+            [styles.rotate]: arrow == 'down',
           })}
         />
       )}

@@ -5,6 +5,8 @@ import { withLayout } from 'layout/Layout/Layout';
 import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from 'next';
 import { ParsedUrlQuery } from 'querystring';
 
+axios.defaults.baseURL = process.env.NEXT_PUBLIC_DOMAIN;
+
 const Type = ({ firstCategory }: TypeProps): JSX.Element => {
   return <div>Type: {firstCategory}</div>;
 };

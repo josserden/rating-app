@@ -1,0 +1,71 @@
+.cardWrapper {
+  @apply flex flex-col gap-2 divide-y px-7;
+}
+
+.cardHeader {
+  @apply flex flex-wrap gap-8 pb-[18px] xl:gap-10;
+}
+
+.cardHeaderImg {
+  @apply truncate;
+}
+
+.cardHeaderBox {
+  @apply grid grid-rows-2 gap-2 text-gray-600;
+}
+
+.cardHeaderTitle {
+  @apply text-xl font-semibold;
+}
+
+.cardHeaderTagsBox {
+  @apply flex flex-wrap items-center gap-0.5;
+}
+
+.cardHeaderTitleDescription {
+  @apply text-sm font-light;
+}
+
+.cardHeaderSubtitle {
+  @apply text-xl font-normal;
+}
+
+.cardHeaderSubtitleCentered {
+  @apply flex items-center gap-1;
+}
+
+.cardBody {
+  @apply grid grid-cols-1 gap-[14px] pt-[22px] pb-[26px];
+}
+
+.cardBodyWrapper {
+  @apply grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-0;
+}
+
+.cardBodyInfo {
+  @apply flex flex-col gap-5 lg:pr-[60px];
+}
+
+.cardBodyInfoItem {
+  @apply grid grid-cols-[auto_1fr_auto] gap-3;
+}
+
+.cardBodyInfoItemTitle {
+  @apply text-base font-bold;
+}
+
+.cardBodyInfoItemDecor {
+  @apply border-b-2 border-dotted border-gray-300;
+}
+
+.cardBodyReviews {
+  @apply grid grid-cols-1 gap-4;
+}
+
+.cardBodyReviewItem {
+  @apply grid grid-cols-1 gap-1 border-l-[3px] pl-4;
+}
+
+.cardFooter {
+  @apply flex gap-5 pt-5;
+}

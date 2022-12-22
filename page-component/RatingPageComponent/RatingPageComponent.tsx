@@ -1,48 +1,17 @@
-import { Advantages, CardData, Heading, Sort, Tag } from '@components/index';
+import {
+  Advantages,
+  CardData,
+  Heading,
+  Product,
+  Sort,
+  Tag,
+} from '@components/index';
 import { SortEnum } from '@components/Sort/Sort.props';
+import { sortReducer } from 'helpers/sortReducer';
 import { TopLevelCategory } from 'interfaces/course.interface';
-import { ProductModel } from 'interfaces/product.interface';
 import { useReducer } from 'react';
 import { RatingPageProps } from './RatingPageComponent.props';
-
-export type SortAction =
-  | {
-      type: SortEnum.Price;
-    }
-  | {
-      type: SortEnum.Rating;
-    };
-
-export interface SortReducerState {
-  sort: SortEnum;
-  products: ProductModel[];
-}
-
-const sortReducer = (
-  state: SortReducerState,
-  action: SortAction
-): SortReducerState => {
-  switch (action.type) {
-    case SortEnum.Rating:
-      return {
-        sort: SortEnum.Rating,
-        products: state.products.sort((a, b) =>
-          a.initialRating > b.initialRating ? -1 : 1
-        ),
-      };
-
-    case SortEnum.Price:
-      return {
-        sort: SortEnum.Price,
-        products: state.products.sort((a, b) =>
-          a.initialRating > b.initialRating ? 1 : -1
-        ),
-      };
-
-    default:
-      throw new Error('Incorrect sorting type');
-  }
-};
+import styles from './RatingPageComponent.module.css';
 
 export const RatingPageComponent = ({
   page,
@@ -63,8 +32,9 @@ export const RatingPageComponent = ({
 
   return (
     <>
-      <header className="grid grid-cols-[auto_1fr_auto] items-center justify-items-start gap-5">
+      <header className={styles.mainPageHeader}>
         {page && <Heading tag="h1">{page.title}</Heading>}
+
         {products && (
           <Tag color="grey" size="sm">
             {products.length}
@@ -74,14 +44,14 @@ export const RatingPageComponent = ({
         <Sort sort={sort} setSort={setSort} />
       </header>
 
-      <ul>
+      <div className="grid grid-cols-1 gap-10">
         {sortedProducts &&
           sortedProducts.map((product) => (
-            <li key={product._id}>{product.title}</li>
+            <Product product={product} key={product._id} />
           ))}
-      </ul>
+      </div>
 
-      <div className="grid grid-cols-[auto_1fr_auto] items-center justify-items-start gap-5">
+      <div className={styles.mainPageTitle}>
         {page && <Heading tag="h2">Вакансии - {page.category}</Heading>}
 
         {products && (
@@ -89,17 +59,15 @@ export const RatingPageComponent = ({
             {products.length}
           </Tag>
         )}
-
-        <span>Сортировка</span>
       </div>
 
       {firstCategory == TopLevelCategory.Courses && page.hh && (
         <CardData {...page.hh} />
       )}
 
-      {page?.advantages && page.advantages.length > 0 && (
+      {page.advantages && page.advantages.length > 0 && (
         <>
-          <Heading tag="h2" className="mt-12">
+          <Heading tag="h2" className="mt-12 mb-6">
             Преимущества
           </Heading>
 
@@ -107,20 +75,20 @@ export const RatingPageComponent = ({
         </>
       )}
 
-      {page?.seoText && (
+      {page.seoText && (
         <div
-          className="prose max-w-none pl-7 pt-10 font-light text-gray-700 prose-headings:mt-5"
+          className={styles.seoTextWrapper}
           dangerouslySetInnerHTML={{ __html: page.seoText }}
         />
       )}
 
-      <Heading tag="h2" className="mt-12">
+      <Heading tag="h2" className="mt-12  mb-6">
         Получаемые навыки
       </Heading>
 
-      <div className="inline-flex gap-2">
+      <div className={styles.tagWrapper}>
         {page?.tags.map((tag) => (
-          <Tag key={tag} color="primary">
+          <Tag key={tag} color="primary" size="sm">
             {tag}
           </Tag>
         ))}

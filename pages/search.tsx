@@ -3,6 +3,9 @@ import { MenuItem } from 'interfaces/menu.interface';
 import { withLayout } from 'layout/Layout/Layout';
 import { GetStaticProps } from 'next';
 
+axios.defaults.baseURL = process.env.NEXT_PUBLIC_DOMAIN;
+
+
 const Search = (): JSX.Element => {
   return <div>Search</div>;
 };

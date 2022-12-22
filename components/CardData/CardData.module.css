@@ -1,7 +1,39 @@
-.card {
-  @apply rounded bg-slate-50 shadow-md;
+.leftCard {
+  @apply flex flex-col items-center gap-3;
 }
 
-.blue {
-  @apply bg-slate-300;
+.leftCardText {
+  @apply font-light text-gray-700;
+}
+
+.leftCardCount {
+  @apply text-4xl font-bold leading-[48px] text-blue-700;
+}
+
+.rightCard {
+  @apply grid divide-y md:grid-cols-3 md:divide-x md:divide-y-0 md:px-0;
+}
+
+.rightCardWrapper {
+  @apply flex flex-col items-center px-6 py-6 md:gap-3 md:py-0;
+}
+
+.rightCardTitle {
+  @apply font-light text-gray-700;
+}
+
+.rightCardPrice {
+  @apply text-2xl font-bold leading-9 text-gray-800 lg:text-[28px];
+}
+
+.rightCardIconWrapper {
+  @apply flex justify-center gap-1 text-gray-400;
+}
+
+.iconPrimary {
+  @apply h-5 w-5 fill-amber-500;
+}
+
+.iconGhost {
+  @apply h-5 w-5 fill-current;
 }

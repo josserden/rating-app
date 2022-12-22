@@ -13,3 +13,11 @@
 .icon {
   @apply h-6 w-4 fill-current;
 }
+
+.hasIcon {
+  @apply flex items-center gap-2;
+}
+
+.rotate {
+  @apply rotate-90;
+}

@@ -13,3 +13,7 @@
 .editable {
   cursor: pointer;
 }
+
+.error svg {
+  @apply stroke-rose-500;
+}

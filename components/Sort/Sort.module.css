@@ -1,0 +1,15 @@
+.sortWrapper {
+  @apply flex items-center gap-11;
+}
+
+.sortBtn {
+  @apply flex items-center gap-2 text-base font-normal leading-6 text-gray-800 transition-colors hover:text-gray-500 focus:text-gray-500;
+}
+
+.sortBtnActive {
+  @apply !font-bold text-blue-700 hover:text-blue-500 focus:text-blue-500;
+}
+
+.sortBtnIcon {
+  @apply w-5;
+}

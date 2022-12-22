@@ -1,9 +1,11 @@
 import { MagnifyingGlassIcon } from '@heroicons/react/24/solid';
 import classNames from 'classnames';
 import { useRouter } from 'next/router';
-import React, { ChangeEvent, useState } from 'react';
+import React, { ChangeEvent, KeyboardEvent, useState } from 'react';
+import { routes } from 'routes';
 import { Input } from '..';
 import { SearchProps } from './Search.props';
+import styles from './Search.module.css';
 
 export const Search = ({ className, ...props }: SearchProps): JSX.Element => {
   const [query, setQuery] = useState<string>('');
@@ -16,21 +18,23 @@ export const Search = ({ className, ...props }: SearchProps): JSX.Element => {
 
   const goToSearch = () => {
     router.push({
-      pathname: '/search',
+      pathname: routes.SEARCH,
       query: {
         query,
       },
     });
   };
 
-  const handleKeyDown = (event: KeyboardEvent) => {
-    if (event.key == 'Enter') {
+  const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
+    const { key } = event;
+
+    if (key == 'Enter') {
       goToSearch();
     }
   };
 
   return (
-    <div className={classNames('relative', className)} {...props}>
+    <div className={classNames(styles.searchWrapper, className)} {...props}>
       <Input
         id="search"
         placeholder="Search ..."
@@ -41,10 +45,10 @@ export const Search = ({ className, ...props }: SearchProps): JSX.Element => {
 
       <button
         type="button"
-        className="absolute right-1 top-1 rounded-md bg-blue-700 p-2 text-slate-50 transition-colors hover:bg-blue-600 hover:text-slate-200 focus:text-slate-200"
+        className={styles.searchButton}
         onClick={goToSearch}
       >
-        <MagnifyingGlassIcon className="h-4 w-4 fill-current" />
+        <MagnifyingGlassIcon className={styles.searchIcon} />
       </button>
     </div>
   );

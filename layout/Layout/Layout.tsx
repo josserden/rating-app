@@ -1,4 +1,3 @@
-import classNames from 'classnames';
 import { AppContextProvider, IAppContext } from 'context/app.context';
 import { Footer } from 'layout/Footer/Footer';
 import { Header } from 'layout/Header/Header';
@@ -9,18 +8,14 @@ import { LayoutProps } from './Layout.props';
 
 const Layout = ({ children }: LayoutProps): JSX.Element => {
   return (
-    <div className="grid min-h-screen grid-cols-sm grid-rows-sm grid-areas-sm md:grid-cols-md md:grid-rows-md md:grid-areas-md">
-      <Header className="grid-in-header md:hidden" />
+    <div className={styles.layoutWrapper}>
+      <Header className={styles.layoutHeader} />
 
-      <Sidebar
-        className={
-          'hidden min-h-full flex-col gap-6 py-8 pr-7 pl-6 grid-in-sidebar md:flex'
-        }
-      />
+      <Sidebar className={styles.layoutSidebar} />
 
-      <main className="p-8 grid-in-body">{children}</main>
+      <main className={styles.layoutMain}>{children}</main>
 
-      <Footer className="mt-auto grid-in-footer" />
+      <Footer className={styles.layoutFooter} />
     </div>
   );
 };

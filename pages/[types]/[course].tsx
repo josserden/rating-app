@@ -88,6 +88,10 @@ export const getStaticProps: GetStaticProps<RatingPageProps> = async ({
       limit: 10,
     });
 
+    console.log({
+      products,
+    });
+
     return {
       props: {
         menu,

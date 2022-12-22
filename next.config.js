@@ -3,6 +3,9 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
+  images: {
+    domains: ['courses-top.ru'],
+  },
 
   webpack(config) {
     const fileLoaderRule = config.module.rules.find(

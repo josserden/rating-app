@@ -1,0 +1,27 @@
+.wrapper {
+  @apply mt-7 grid grid-cols-1 gap-8;
+}
+
+.item {
+  @apply grid grid-cols-[50px_1fr] gap-x-10 gap-y-3;
+}
+
+.iconWrapper {
+  @apply flex h-10 w-10 items-center justify-center justify-self-center rounded-full  bg-green-100;
+}
+
+.icon {
+  @apply h-6 w-6 text-green-500;
+}
+
+.title {
+  @apply text-xl font-bold leading-7 text-gray-800;
+}
+
+.border {
+  @apply justify-self-center border-r border-gray-300;
+}
+
+.description {
+  @apply text-base font-light leading-7 text-gray-700;
+}

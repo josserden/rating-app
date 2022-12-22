@@ -1,5 +1,5 @@
 .paragraph {
-  @apply font-normal text-slate-900;
+  @apply font-normal text-gray-600;
 }
 
 .sm {

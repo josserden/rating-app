@@ -26,23 +26,20 @@ export const Menu = (): JSX.Element => {
 
   const buildFirstLevel = () => {
     return (
-      <ul className="flex flex-col gap-5">
+      <ul className={styles.firstLevelList}>
         {firstLevelMenu.map((menu) => (
-          <li key={menu.id} className="flex flex-col gap-5">
+          <li key={menu.id} className={styles.firstLevelList}>
             <Link href={`/${menu.route}`}>
               <a
-                className={classNames(
-                  'item-center flex gap-5 text-stone-500 transition-colors hover:text-blue-700 focus:text-blue-700',
-                  {
-                    ['!text-blue-700']: menu.id == firstCategory,
-                  }
-                )}
+                className={classNames(styles.firstLevelLink, {
+                  [styles.firstLevelLinkActive]: menu.id == firstCategory,
+                })}
               >
-                <span className={classNames('h-6 w-6 text-inherit')}>
+                <span className={classNames(styles.firstLevelIcon)}>
                   {menu.icon}
                 </span>
 
-                <h2 className="text-lg font-medium leading-6">{menu.name}</h2>
+                <h2 className={styles.firstLevelTitle}>{menu.name}</h2>
               </a>
             </Link>
 
@@ -55,7 +52,7 @@ export const Menu = (): JSX.Element => {
 
   const buildSecondLevel = (menuItem: FirstLevelMenu) => {
     return (
-      <ul className="ml-3 flex flex-col gap-5 border-l-2 border-gray-300 px-3">
+      <ul className={styles.secondLevelList}>
         {menu &&
           menu.map((item) => {
             const conditionForOpenMenu = item.pages
@@ -67,7 +64,7 @@ export const Menu = (): JSX.Element => {
             return (
               <li key={item._id.secondCategory}>
                 <button
-                  className="text-xs font-light uppercase leading-5 text-gray-700"
+                  className={styles.secondLevelItem}
                   onClick={() => openSecondLevel(item._id.secondCategory)}
                 >
                   {item._id.secondCategory}
@@ -95,13 +92,10 @@ export const Menu = (): JSX.Element => {
             <li key={page.category}>
               <Link href={`/${route}/${page.alias}`}>
                 <a
-                  className={classNames(
-                    'text-sm font-medium leading-5 text-stone-600 transition-colors hover:text-blue-700 focus:text-blue-700',
-                    {
-                      ['!text-blue-700']:
-                        `/${route}/${page.alias}` == router.asPath,
-                    }
-                  )}
+                  className={classNames(styles.thirdLevelLink, {
+                    [styles.thirdLevelLinkActive]:
+                      `/${route}/${page.alias}` == router.asPath,
+                  })}
                 >
                   {page.category}
                 </a>

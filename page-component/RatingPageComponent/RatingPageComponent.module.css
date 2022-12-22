@@ -1,0 +1,15 @@
+.mainPageHeader {
+  @apply mb-5 grid grid-cols-[auto_1fr_auto] items-center justify-items-start gap-5;
+}
+
+.mainPageTitle {
+  @apply mt-12 mb-8 grid grid-cols-[auto_1fr_auto] items-center !justify-items-start gap-5;
+}
+
+.seoTextWrapper {
+  @apply prose max-w-none pl-7 pt-10 font-light text-gray-700 prose-headings:mt-5;
+}
+
+.tagWrapper {
+  @apply inline-flex flex-wrap gap-2;
+}
