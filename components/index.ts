@@ -1,5 +1,6 @@
 export * from './Advantages/Advantages';
 export * from './Button/Button';
+export * from './ButtonIcon/ButtonIcon';
 export * from './Card/Card';
 export * from './CardData/CardData';
 export * from './Heading/Heading';
@@ -15,3 +16,4 @@ export * from './Search/Search';
 export * from './Sort/Sort';
 export * from './Tag/Tag';
 export * from './TextArea/TextArea';
+export * from './ToTop/ToTop';

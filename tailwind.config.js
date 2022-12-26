@@ -57,6 +57,10 @@ module.exports = {
         sm: ['auto 1fr auto'],
         md: ['auto 1fr auto'],
       },
+
+      boxShadow: {
+        '3xl': '0px 4px 4px rgba(0, 0, 0, 0.05)',
+      },
     },
   },
   variants: {

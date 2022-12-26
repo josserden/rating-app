@@ -1,0 +1,15 @@
+.button {
+  @apply rounded-[10px] p-2 shadow-3xl transition-colors;
+}
+
+.primary {
+  @apply bg-violet-700 text-white hover:bg-violet-600 hover:text-slate-300 focus:bg-violet-600 focus:text-slate-300;
+}
+
+.white {
+  @apply bg-white text-violet-700 hover:bg-slate-300 hover:text-white focus:bg-slate-300 focus:text-white;
+}
+
+.icon {
+  @apply h-6 w-6;
+}

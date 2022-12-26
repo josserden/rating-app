@@ -9,7 +9,7 @@ import {
 import { SortEnum } from '@components/Sort/Sort.props';
 import { sortReducer } from 'helpers/sortReducer';
 import { TopLevelCategory } from 'interfaces/course.interface';
-import { useReducer } from 'react';
+import { useEffect, useReducer } from 'react';
 import { RatingPageProps } from './RatingPageComponent.props';
 import styles from './RatingPageComponent.module.css';
 
@@ -25,6 +25,10 @@ export const RatingPageComponent = ({
       sort: SortEnum.Rating,
     }
   );
+
+  useEffect(() => {
+    dispatch({ type: 'reset', initialState: products });
+  }, [products]);
 
   const setSort = (sort: SortEnum) => {
     dispatch({ type: sort });
@@ -44,10 +48,10 @@ export const RatingPageComponent = ({
         <Sort sort={sort} setSort={setSort} />
       </header>
 
-      <div className="grid grid-cols-1 gap-10">
+      <div className="grid grid-cols-1 gap-4">
         {sortedProducts &&
           sortedProducts.map((product) => (
-            <Product product={product} key={product._id} />
+            <Product layout product={product} key={product._id} />
           ))}
       </div>
 
@@ -65,7 +69,7 @@ export const RatingPageComponent = ({
         <CardData {...page.hh} />
       )}
 
-      {page.advantages && page.advantages.length > 0 && (
+      {page?.advantages && page.advantages.length > 0 && (
         <>
           <Heading tag="h2" className="mt-12 mb-6">
             Преимущества
@@ -75,7 +79,7 @@ export const RatingPageComponent = ({
         </>
       )}
 
-      {page.seoText && (
+      {page?.seoText && (
         <div
           className={styles.seoTextWrapper}
           dangerouslySetInnerHTML={{ __html: page.seoText }}

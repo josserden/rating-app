@@ -1,15 +1,37 @@
+import { useContext } from 'react';
+import { useRouter } from 'next/router';
+import Link from 'next/link';
+import { motion } from 'framer-motion';
 import classNames from 'classnames';
 import { AppContext } from 'context/app.context';
-import { useContext } from 'react';
-import styles from './Menu.module.css';
 import { FirstLevelMenu, PageItem } from 'interfaces/menu.interface';
 import { firstLevelMenu } from 'helpers/firstLevelMenu';
-import Link from 'next/link';
-import { useRouter } from 'next/router';
+import styles from './Menu.module.css';
 
 export const Menu = (): JSX.Element => {
   const { menu, setMenu, firstCategory } = useContext(AppContext);
   const router = useRouter();
+
+  const variants = {
+    visible: {
+      transition: {
+        when: 'beforeChildren',
+        staggerChildren: 0.1,
+      },
+    },
+    hidden: {},
+  };
+
+  const variantsChildren = {
+    visible: {
+      opacity: 1,
+      height: 'auto',
+    },
+    hidden: {
+      opacity: 0,
+      height: 0,
+    },
+  };
 
   const openSecondLevel = (secondCategory: string) => {
     setMenu &&
@@ -70,13 +92,14 @@ export const Menu = (): JSX.Element => {
                   {item._id.secondCategory}
                 </button>
 
-                <ul
-                  className={classNames(
-                    item.isOpened ? styles.open : styles.close
-                  )}
+                <motion.ul
+                  layout
+                  variants={variants}
+                  initial={item.isOpened ? 'visible' : 'hidden'}
+                  animate={item.isOpened ? 'visible' : 'hidden'}
                 >
                   {buildThirdLevel(item.pages, menuItem.route)}
-                </ul>
+                </motion.ul>
               </li>
             );
           })}
@@ -89,7 +112,7 @@ export const Menu = (): JSX.Element => {
       <>
         {pages &&
           pages.map((page) => (
-            <li key={page.category}>
+            <motion.li key={page.category} variants={variantsChildren}>
               <Link href={`/${route}/${page.alias}`}>
                 <a
                   className={classNames(styles.thirdLevelLink, {
@@ -100,7 +123,7 @@ export const Menu = (): JSX.Element => {
                   {page.category}
                 </a>
               </Link>
-            </li>
+            </motion.li>
           ))}
       </>
     );

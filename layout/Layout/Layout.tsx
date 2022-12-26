@@ -1,22 +1,27 @@
+import { FunctionComponent } from 'react';
 import { AppContextProvider, IAppContext } from 'context/app.context';
 import { Footer } from 'layout/Footer/Footer';
 import { Header } from 'layout/Header/Header';
 import { Sidebar } from 'layout/Sidebar/Sidebar';
-import { FunctionComponent } from 'react';
+import { ToTop } from 'components';
 import styles from './Layout.module.css';
 import { LayoutProps } from './Layout.props';
 
 const Layout = ({ children }: LayoutProps): JSX.Element => {
   return (
-    <div className={styles.layoutWrapper}>
-      <Header className={styles.layoutHeader} />
+    <>
+      <div className={styles.layoutWrapper}>
+        <Header className={styles.layoutHeader} />
 
-      <Sidebar className={styles.layoutSidebar} />
+        <Sidebar className={styles.layoutSidebar} />
 
-      <main className={styles.layoutMain}>{children}</main>
+        <main className={styles.layoutMain}>{children}</main>
 
-      <Footer className={styles.layoutFooter} />
-    </div>
+        <Footer className={styles.layoutFooter} />
+      </div>
+
+      <ToTop />
+    </>
   );
 };
 
