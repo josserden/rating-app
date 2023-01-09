@@ -117,9 +117,9 @@ export const Product = motion(
                   <span className={styles.cardHeaderTitleDescription}>
                     {product.reviewCount}{' '}
                     {declension(product.reviewCount, [
-                      'отзыв',
-                      'отзыва',
-                      'отзывов',
+                      'відгук',
+                      'відгука',
+                      'відгуків',
                     ])}
                   </span>
                 </a>

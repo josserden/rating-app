@@ -1,5 +1,5 @@
 .mainPageHeader {
-  @apply mb-5 grid grid-cols-[auto_1fr_auto] items-center justify-items-start gap-5;
+  @apply mb-5 grid-cols-[auto_1fr_auto] items-center justify-items-start gap-5 md:grid;
 }
 
 .mainPageTitle {

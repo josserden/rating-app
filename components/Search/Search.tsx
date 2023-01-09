@@ -2,7 +2,7 @@ import { MagnifyingGlassIcon } from '@heroicons/react/24/solid';
 import classNames from 'classnames';
 import { useRouter } from 'next/router';
 import React, { ChangeEvent, KeyboardEvent, useState } from 'react';
-import { routes } from 'routes';
+import { routes } from 'helpers/routes';
 import { Input } from '..';
 import { SearchProps } from './Search.props';
 import styles from './Search.module.css';

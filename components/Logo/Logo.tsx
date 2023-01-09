@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import Link from 'next/link';
-import { routes } from 'routes';
+import { routes } from 'helpers/routes';
 import styles from './Logo.module.css';
 import { LogoProps } from './Logo.props';
 

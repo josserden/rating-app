@@ -11,7 +11,7 @@ export const Review = ({ review }: ReviewProps): JSX.Element => {
     <>
       <div
         key={_id}
-        className="grid grid-flow-col grid-cols-[auto_auto_1fr_auto] items-center gap-2 "
+        className="grid grid-cols-1 items-center gap-2 md:grid-flow-col md:grid-cols-[auto_auto_1fr_auto] "
       >
         <UserCircleIcon className="h-8 w-8 text-blue-600" />
 

@@ -5,16 +5,21 @@ import { ButtonIconProps, icons } from './ButtonIcon.props';
 export const ButtonIcon = ({
   appearance,
   icon,
+  className,
   ...props
 }: ButtonIconProps): JSX.Element => {
   const Icon = icons[icon];
 
   return (
     <button
-      className={classNames(styles.button, {
-        [styles.primary]: appearance == 'primary',
-        [styles.white]: appearance == 'white',
-      })}
+      className={classNames(
+        styles.button,
+        {
+          [styles.primary]: appearance == 'primary',
+          [styles.white]: appearance == 'white',
+        },
+        className
+      )}
       type="button"
       {...props}
     >
