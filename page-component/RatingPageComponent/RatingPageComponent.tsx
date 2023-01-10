@@ -12,6 +12,7 @@ import { TopLevelCategory } from 'interfaces/course.interface';
 import { useEffect, useReducer } from 'react';
 import { RatingPageProps } from './RatingPageComponent.props';
 import styles from './RatingPageComponent.module.css';
+import { useReducedMotion } from 'framer-motion';
 
 export const RatingPageComponent = ({
   page,
@@ -25,6 +26,7 @@ export const RatingPageComponent = ({
       sort: SortEnum.Rating,
     }
   );
+  const shouldReduceMotion = useReducedMotion();
 
   useEffect(() => {
     dispatch({ type: 'reset', initialState: products });
@@ -40,7 +42,7 @@ export const RatingPageComponent = ({
         {page && <Heading tag="h1">{page.title}</Heading>}
 
         {products && (
-          <Tag color="grey" size="sm">
+          <Tag color="grey" size="sm" aria-label={`${products.length} counter`}>
             {products.length}
           </Tag>
         )}
@@ -51,7 +53,11 @@ export const RatingPageComponent = ({
       <div className="grid grid-cols-1 gap-4">
         {sortedProducts &&
           sortedProducts.map((product) => (
-            <Product layout product={product} key={product._id} />
+            <Product
+              layout={shouldReduceMotion ? false : true}
+              product={product}
+              key={product._id}
+            />
           ))}
       </div>
 

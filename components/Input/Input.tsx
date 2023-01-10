@@ -20,7 +20,10 @@ export const Input = forwardRef(
         />
 
         {error && (
-          <span className=" absolute -bottom-6 left-0 text-rose-500">
+          <span
+            className=" absolute -bottom-6 left-0 text-rose-500"
+            role="alert"
+          >
             {error.message}
           </span>
         )}

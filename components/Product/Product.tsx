@@ -1,5 +1,12 @@
 /* eslint-disable react/display-name */
-import { ForwardedRef, forwardRef, useRef, useState } from 'react';
+import {
+  ForwardedRef,
+  forwardRef,
+  useRef,
+  useState,
+  SyntheticEvent,
+  useEffect,
+} from 'react';
 import Image from 'next/image';
 import { useMediaQuery } from 'react-responsive';
 import classNames from 'classnames';
@@ -19,6 +26,7 @@ export const Product = motion(
       const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1024px)' });
       const [openComments, setOpenComments] = useState<boolean>(false);
       const reviewRef = useRef<HTMLDivElement>(null);
+
       const variants = {
         visible: {
           opacity: 1,
@@ -34,16 +42,22 @@ export const Product = motion(
         setOpenComments(!openComments);
       };
 
-      const scrollToReview = () => {
-        if (product.reviewCount == 0) {
-          return;
+      useEffect(() => {
+        if (openComments) {
+          reviewRef.current?.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start',
+          });
         }
+      }, [openComments]);
+
+      const scrollToReview = (e: SyntheticEvent) => {
+        e.preventDefault();
+
+        if (product.reviewCount == 0) return;
+        if (!reviewRef.current) return;
 
         setOpenComments(true);
-        reviewRef.current?.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start',
-        });
         reviewRef.current?.focus();
       };
 
@@ -113,16 +127,23 @@ export const Product = motion(
                   rating={product.reviewAvg ?? product.initialRating}
                 />
 
-                <a href="#ref" onClick={scrollToReview}>
-                  <span className={styles.cardHeaderTitleDescription}>
+                <motion.p
+                  whileHover={{ scale: 1.05 }}
+                  whileFocus={{ scale: 1.05 }}
+                >
+                  <a
+                    href=""
+                    className={styles.cardHeaderTitleDescription}
+                    onClick={scrollToReview}
+                  >
                     {product.reviewCount}{' '}
                     {declension(product.reviewCount, [
                       'відгук',
                       'відгука',
                       'відгуків',
                     ])}
-                  </span>
-                </a>
+                  </a>
+                </motion.p>
               </div>
             </div>
 
@@ -178,6 +199,7 @@ export const Product = motion(
                 appearance="ghost"
                 arrow={openComments ? 'down' : 'right'}
                 onClick={handleBtnClick}
+                aria-expanded={openComments}
               >
                 Читать отзывы
               </Button>
@@ -188,11 +210,10 @@ export const Product = motion(
             animate={openComments ? 'visible' : 'hidden'}
             initial="hidden"
             variants={variants}
+            ref={reviewRef}
+            tabIndex={openComments ? 0 : -1}
           >
-            <Card
-              className="-mt-3 grid grid-cols-1 gap-3 !bg-neutral-50 px-7"
-              ref={reviewRef}
-            >
+            <Card className="-mt-3 grid grid-cols-1 gap-3 !bg-neutral-50 px-7">
               {product.reviews.length > 0 && (
                 <div className="grid grid-cols-1 gap-5 pb-3 ">
                   {product.reviews.map((review) => (
@@ -201,7 +222,7 @@ export const Product = motion(
                 </div>
               )}
 
-              <ReviewForm productId={product._id} />
+              <ReviewForm productId={product._id} isOpened={openComments} />
             </Card>
           </motion.div>
         </>

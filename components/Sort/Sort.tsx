@@ -25,6 +25,8 @@ export const Sort = ({
             className={classNames(styles.sortBtn, {
               [styles.sortBtnActive]: sort == type,
             })}
+            aria-pressed={sort == type}
+            aria-labelledby={text}
           >
             {sort == type && (
               <Bars3BottomRightIcon className={styles.sortBtnIcon} />

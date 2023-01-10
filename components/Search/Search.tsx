@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import { useRouter } from 'next/router';
 import React, { ChangeEvent, KeyboardEvent, useState } from 'react';
 import { routes } from 'helpers/routes';
-import { Input } from '..';
+import { Button, Input } from '..';
 import { SearchProps } from './Search.props';
 import styles from './Search.module.css';
 
@@ -34,7 +34,11 @@ export const Search = ({ className, ...props }: SearchProps): JSX.Element => {
   };
 
   return (
-    <div className={classNames(styles.searchWrapper, className)} {...props}>
+    <form
+      className={classNames(styles.searchWrapper, className)}
+      role="search"
+      {...props}
+    >
       <Input
         id="search"
         placeholder="Search ..."
@@ -43,13 +47,14 @@ export const Search = ({ className, ...props }: SearchProps): JSX.Element => {
         onKeyDown={handleKeyDown}
       />
 
-      <button
-        type="button"
+      <Button
         className={styles.searchButton}
+        appearance="primary"
         onClick={goToSearch}
+        aria-label="Search"
       >
         <MagnifyingGlassIcon className={styles.searchIcon} />
-      </button>
-    </div>
+      </Button>
+    </form>
   );
 };

@@ -11,9 +11,13 @@
 }
 
 .layoutMain {
-  @apply p-8 grid-in-body;
+  @apply p-8 outline-none grid-in-body;
 }
 
 .layoutFooter {
   @apply mt-auto grid-in-footer;
+}
+
+.skipLink {
+  @apply sr-only;
 }

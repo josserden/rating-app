@@ -1,4 +1,4 @@
-import { FunctionComponent } from 'react';
+import { FunctionComponent, useRef, useState, KeyboardEvent } from 'react';
 import { AppContextProvider, IAppContext } from 'context/app.context';
 import { Footer } from 'layout/Footer/Footer';
 import { Header } from 'layout/Header/Header';
@@ -8,14 +8,38 @@ import styles from './Layout.module.css';
 import { LayoutProps } from './Layout.props';
 
 const Layout = ({ children }: LayoutProps): JSX.Element => {
+  const [skipLinkSnow, setSkipLinkSnow] = useState<boolean>(false);
+  const bodyRef = useRef<HTMLDivElement>(null);
+
+  const skipLinkAction = (e: KeyboardEvent) => {
+    if (e.code === 'Enter' || e.code === 'Space') {
+      e.preventDefault();
+
+      bodyRef.current?.focus();
+    }
+
+    setSkipLinkSnow(!skipLinkSnow);
+  };
+
   return (
     <>
       <div className={styles.layoutWrapper}>
+        <a
+          className={styles.skipLink}
+          onFocus={() => setSkipLinkSnow(true)}
+          onKeyDown={skipLinkAction}
+          tabIndex={1}
+        >
+          Skip to content
+        </a>
+
         <Header className={styles.layoutHeader} />
 
         <Sidebar className={styles.layoutSidebar} />
 
-        <main className={styles.layoutMain}>{children}</main>
+        <main className={styles.layoutMain} ref={bodyRef} tabIndex={0}>
+          {children}
+        </main>
 
         <Footer className={styles.layoutFooter} />
       </div>

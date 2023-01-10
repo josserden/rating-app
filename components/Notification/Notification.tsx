@@ -1,6 +1,7 @@
 import { NotificationProps } from './Notification.props';
 import { XMarkIcon } from '@heroicons/react/24/solid';
 import classNames from 'classnames';
+import { ButtonIcon } from '..';
 
 export const Notification = ({
   title,
@@ -28,6 +29,7 @@ export const Notification = ({
         )}
         type="button"
         onClick={onClose}
+        aria-label="Close notification"
       >
         <XMarkIcon
           className={`${

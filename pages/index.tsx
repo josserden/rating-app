@@ -24,6 +24,10 @@ const Home = ({ menu, firstCategory }: HomeProps): JSX.Element => {
         Курсы по Photoshop
       </Heading>
 
+      <div className="hover:text-red-600 focus:text-red-500">
+        text for test focus
+      </div>
+
       <Input id="name" placeholder="Name" />
       <Input id="title" placeholder="Title" />
       <TextArea placeholder="Enter your feedback" />

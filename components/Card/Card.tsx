@@ -5,16 +5,17 @@ import styles from './Card.module.css';
 
 export const Card = forwardRef(
   (
-    { color, children, className, ...props }: CardProps,
+    { color = 'white', children, className, ...props }: CardProps,
     ref: ForwardedRef<HTMLDivElement>
   ): JSX.Element => {
+    console.log(ref);
     return (
       <div
         className={classNames(styles.card, className, {
           [styles.blue]: color == 'blue',
         })}
-        {...props}
         ref={ref}
+        {...props}
       >
         {children}
       </div>

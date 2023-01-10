@@ -5,14 +5,11 @@ import { Paragraph, Rating } from '..';
 import { ReviewProps } from './Review.props';
 
 export const Review = ({ review }: ReviewProps): JSX.Element => {
-  const { _id, name, title, createdAt, rating, description } = review;
+  const { name, title, createdAt, rating, description } = review;
 
   return (
     <>
-      <div
-        key={_id}
-        className="grid grid-cols-1 items-center gap-2 md:grid-flow-col md:grid-cols-[auto_auto_1fr_auto] "
-      >
+      <div className="grid grid-cols-1 items-center gap-2 md:grid-flow-col md:grid-cols-[auto_auto_1fr_auto] ">
         <UserCircleIcon className="h-8 w-8 text-blue-600" />
 
         <h4 className=" text-sm font-bold">{name}</h4>

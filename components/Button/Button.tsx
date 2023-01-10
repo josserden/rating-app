@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import { ChevronRightIcon } from '@heroicons/react/24/solid';
 import classNames from 'classnames';
 import styles from './Button.module.css';
@@ -11,7 +12,9 @@ export const Button = ({
   ...props
 }: ButtonProps): JSX.Element => {
   return (
-    <button
+    <motion.button
+      whileHover={{ scale: 1.05 }}
+      whileFocus={{ scale: 1.05 }}
       className={classNames(styles.button, className, {
         [styles.primary]: appearance == 'primary',
         [styles.ghost]: appearance == 'ghost',
@@ -28,6 +31,6 @@ export const Button = ({
           })}
         />
       )}
-    </button>
+    </motion.button>
   );
 };

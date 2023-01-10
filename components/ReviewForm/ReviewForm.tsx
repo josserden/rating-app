@@ -8,6 +8,7 @@ import { ReviewFormProps } from './ReviewForm.props';
 
 export const ReviewForm = ({
   productId,
+  isOpened,
   className,
   ...props
 }: ReviewFormProps): JSX.Element => {
@@ -17,6 +18,7 @@ export const ReviewForm = ({
     handleSubmit,
     formState: { errors },
     reset,
+    clearErrors,
   } = useForm<IReviewForm>();
   const [isSuccess, setIsSuccess] = useState<boolean>(false);
   const [isError, setIsError] = useState<boolean>(false);
@@ -57,6 +59,8 @@ export const ReviewForm = ({
             })}
             placeholder="Name"
             error={errors.name}
+            tabIndex={isOpened ? 0 : -1}
+            aria-invalid={errors.name ? true : false}
           />
 
           <Input
@@ -65,6 +69,8 @@ export const ReviewForm = ({
             })}
             placeholder="Title"
             error={errors.title}
+            tabIndex={isOpened ? 0 : -1}
+            aria-invalid={errors.title ? true : false}
           />
 
           <div className="relative flex gap-2 lg:justify-self-end">
@@ -81,6 +87,7 @@ export const ReviewForm = ({
                   className="flex"
                   ref={field.ref}
                   error={errors.rating}
+                  tabIndex={isOpened ? 0 : -1}
                 />
               )}
             />
@@ -94,9 +101,18 @@ export const ReviewForm = ({
           placeholder="Enter your feedback"
           className="mb-5"
           error={errors.description}
+          tabIndex={isOpened ? 0 : -1}
+          aria-label="Enter your feedback"
+          aria-invalid={errors.description ? true : false}
         />
 
-        <Button appearance="primary">Отправить</Button>
+        <Button
+          appearance="primary"
+          tabIndex={isOpened ? 0 : -1}
+          onClick={() => clearErrors()}
+        >
+          Отправить
+        </Button>
         <span className="ml-3 text-sm font-light text-gray-600">
           * Перед публикацией отзыв пройдет предварительную модерацию и проверку
         </span>
@@ -110,6 +126,7 @@ export const ReviewForm = ({
           onClose={() => {
             setIsSuccess(false);
           }}
+          role="alert"
         />
       )}
 
@@ -121,6 +138,7 @@ export const ReviewForm = ({
           onClose={() => {
             setIsError(false);
           }}
+          role="alert"
         />
       )}
     </>

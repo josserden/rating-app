@@ -10,9 +10,12 @@ export const icons = {
 export type ButtonIconTypes = keyof typeof icons;
 
 export interface ButtonIconProps
-  extends DetailedHTMLProps<
-    ButtonHTMLAttributes<HTMLButtonElement>,
-    HTMLButtonElement
+  extends Omit<
+    DetailedHTMLProps<
+      ButtonHTMLAttributes<HTMLButtonElement>,
+      HTMLButtonElement
+    >,
+    'ref' | 'onAnimationStart' | 'onDrag' | 'onDragStart' | 'onDragEnd'
   > {
   icon: ButtonIconTypes;
   appearance: 'primary' | 'white';

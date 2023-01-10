@@ -3,7 +3,7 @@
 }
 
 .searchButton {
-  @apply absolute right-1 top-1 rounded-md bg-blue-700 p-2 text-slate-50 transition-colors hover:bg-blue-600 hover:text-slate-200 focus:text-slate-200;
+  @apply absolute right-1 top-1 p-2;
 }
 
 .searchIcon {

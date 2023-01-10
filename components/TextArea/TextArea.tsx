@@ -22,7 +22,10 @@ export const TextArea = forwardRef(
         ></textarea>
 
         {error && (
-          <span className=" absolute bottom-0 left-0 text-rose-500">
+          <span
+            className=" absolute bottom-0 left-0 text-rose-500"
+            role="alert"
+          >
             {error.message}
           </span>
         )}
