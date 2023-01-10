@@ -8,7 +8,6 @@ export const Card = forwardRef(
     { color = 'white', children, className, ...props }: CardProps,
     ref: ForwardedRef<HTMLDivElement>
   ): JSX.Element => {
-    console.log(ref);
     return (
       <div
         className={classNames(styles.card, className, {

@@ -11,16 +11,26 @@ import type {
 } from 'next';
 import { RatingPageComponent } from 'page-component';
 import { ParsedUrlQuery } from 'querystring';
+import Head from 'next/head';
 
 axios.defaults.baseURL = process.env.NEXT_PUBLIC_DOMAIN;
 
 const RatingPage = ({ firstCategory, page, products }: RatingPageProps) => {
   return (
-    <RatingPageComponent
-      firstCategory={firstCategory}
-      page={page}
-      products={products}
-    />
+    <>
+      <Head>
+        <title>{page?.metaTitle}</title>
+        <meta name="description" content={page?.metaDescription} />
+        <meta property="og:title" content={page?.metaTitle} />
+        <meta property="og:description" content={page?.metaDescription} />
+      </Head>
+
+      <RatingPageComponent
+        firstCategory={firstCategory}
+        page={page}
+        products={products}
+      />
+    </>
   );
 };
 
