@@ -1,4 +1,4 @@
-import { FunctionComponent, useRef, useState, KeyboardEvent } from 'react';
+import { FunctionComponent, useRef, useState, KeyboardEvent, FC } from 'react';
 import { AppContextProvider, IAppContext } from 'context/app.context';
 import { Footer } from 'layout/Footer/Footer';
 import { Header } from 'layout/Header/Header';
@@ -7,12 +7,12 @@ import { ToTop } from 'components';
 import styles from './Layout.module.css';
 import { LayoutProps } from './Layout.props';
 
-const Layout = ({ children }: LayoutProps): JSX.Element => {
+const Layout: FC<LayoutProps> = ({ children }) => {
   const [skipLinkSnow, setSkipLinkSnow] = useState<boolean>(false);
   const bodyRef = useRef<HTMLDivElement>(null);
 
   const skipLinkAction = (e: KeyboardEvent) => {
-    if (e.code === 'Enter' || e.code === 'Space') {
+    if (e.code == 'Enter' || e.code == 'Space') {
       e.preventDefault();
 
       bodyRef.current?.focus();

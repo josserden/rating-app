@@ -1,10 +1,10 @@
-import { useEffect } from 'react';
+import { FC, useEffect } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import { useScrollYPosition } from 'hooks';
 import { ButtonIcon } from '..';
 import styles from './ToTop.module.css';
 
-export const ToTop = (): JSX.Element => {
+export const ToTop: FC = () => {
   const y = useScrollYPosition();
   const controls = useAnimation();
 

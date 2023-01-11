@@ -1,12 +1,12 @@
-import { ButtonIcon, Logo } from '@components/index';
-import classNames from 'classnames';
-import { motion, useReducedMotion } from 'framer-motion';
-import { Sidebar } from 'layout/Sidebar/Sidebar';
+import { useState, useEffect, FC } from 'react';
 import { useRouter } from 'next/router';
-import { useState, useEffect } from 'react';
+import { motion, useReducedMotion } from 'framer-motion';
+import classNames from 'classnames';
+import { ButtonIcon, Logo } from '@components/index';
+import { Sidebar } from 'layout/Sidebar/Sidebar';
 import { HeaderProps } from './Header.props';
 
-export const Header = ({ className, ...props }: HeaderProps): JSX.Element => {
+export const Header: FC<HeaderProps> = ({ className, ...props }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const shouldReduceMotion = useReducedMotion();
 

@@ -1,10 +1,10 @@
 import { UserCircleIcon } from '@heroicons/react/24/outline';
 import { formatDate } from 'helpers/formatDate';
-import React from 'react';
+import React, { FC } from 'react';
 import { Paragraph, Rating } from '..';
 import { ReviewProps } from './Review.props';
 
-export const Review = ({ review }: ReviewProps): JSX.Element => {
+export const Review: FC<ReviewProps> = ({ review }) => {
   const { name, title, createdAt, rating, description } = review;
 
   return (

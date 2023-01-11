@@ -2,13 +2,14 @@ import { motion } from 'framer-motion';
 import classNames from 'classnames';
 import styles from './ButtonIcon.module.css';
 import { ButtonIconProps, icons } from './ButtonIcon.props';
+import { FC } from 'react';
 
-export const ButtonIcon = ({
+export const ButtonIcon: FC<ButtonIconProps> = ({
   appearance,
   icon,
   className,
   ...props
-}: ButtonIconProps): JSX.Element => {
+}) => {
   const Icon = icons[icon];
 
   return (

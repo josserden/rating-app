@@ -1,13 +1,14 @@
 import classNames from 'classnames';
 import { ParagraphProps } from './Paragraph.props';
 import styles from './Paragraph.module.css';
+import { FC } from 'react';
 
-export const Paragraph = ({
+export const Paragraph: FC<ParagraphProps> = ({
   size = 'md',
   children,
   className,
   ...props
-}: ParagraphProps): JSX.Element => {
+}) => {
   return (
     <p
       className={classNames(styles.paragraph, className, {

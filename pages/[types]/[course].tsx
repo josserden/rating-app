@@ -1,35 +1,45 @@
+import { FC } from 'react';
+import Head from 'next/head';
 import axios, { AxiosResponse } from 'axios';
-import { firstLevelMenu } from 'helpers/firstLevelMenu';
-import { TopLevelCategory, TopPageModel } from 'interfaces/course.interface';
-import { MenuItem } from 'interfaces/menu.interface';
-import { ProductModel } from 'interfaces/product.interface';
+import { ParsedUrlQuery } from 'querystring';
+
 import { withLayout } from 'layout/Layout/Layout';
+import { RatingPageComponent } from 'page-component';
+import { firstLevelMenu } from 'helpers/firstLevelMenu';
+
 import type {
   GetStaticPaths,
   GetStaticProps,
   GetStaticPropsContext,
 } from 'next';
-import { RatingPageComponent } from 'page-component';
-import { ParsedUrlQuery } from 'querystring';
-import Head from 'next/head';
+import { TopLevelCategory, TopPageModel } from 'interfaces/course.interface';
+import { MenuItem } from 'interfaces/menu.interface';
+import { ProductModel } from 'interfaces/product.interface';
+import { Loader } from '@components/index';
 
 axios.defaults.baseURL = process.env.NEXT_PUBLIC_DOMAIN;
 
-const RatingPage = ({ firstCategory, page, products }: RatingPageProps) => {
+const RatingPage: FC<RatingPageProps> = ({ firstCategory, page, products }) => {
   return (
     <>
-      <Head>
-        <title>{page?.metaTitle}</title>
-        <meta name="description" content={page?.metaDescription} />
-        <meta property="og:title" content={page?.metaTitle} />
-        <meta property="og:description" content={page?.metaDescription} />
-      </Head>
+      {page && products ? (
+        <>
+          <Head>
+            <title>{page.metaTitle}</title>
+            <meta name="description" content={page.metaDescription} />
+            <meta property="og:title" content={page.metaTitle} />
+            <meta property="og:description" content={page.metaDescription} />
+          </Head>
 
-      <RatingPageComponent
-        firstCategory={firstCategory}
-        page={page}
-        products={products}
-      />
+          <RatingPageComponent
+            firstCategory={firstCategory}
+            page={page}
+            products={products}
+          />
+        </>
+      ) : (
+        <Loader />
+      )}
     </>
   );
 };
@@ -96,10 +106,6 @@ export const getStaticProps: GetStaticProps<RatingPageProps> = async ({
     >('/api/product/find/', {
       category: page.category,
       limit: 10,
-    });
-
-    console.log({
-      products,
     });
 
     return {

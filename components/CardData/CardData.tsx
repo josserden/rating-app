@@ -1,17 +1,18 @@
+import { FC } from 'react';
 import { StarIcon } from '@heroicons/react/24/solid';
 import { convertPrice } from 'helpers/convertPrice';
 import { Card } from '..';
 import { CardDataProps } from './CardData.props';
 import styles from './CardData.module.css';
 
-export const CardData = ({
+export const CardData: FC<CardDataProps> = ({
   count,
   juniorSalary,
   middleSalary,
   seniorSalary,
-}: CardDataProps): JSX.Element => {
+}) => {
   return (
-    <div className=" mt-5 grid gap-7 lg:grid-cols-[180px_1fr] xl:grid-cols-[260px_1fr]">
+    <div className="mt-5 grid gap-7 lg:grid-cols-[180px_1fr] xl:grid-cols-[260px_1fr]">
       <Card className={styles.leftCard}>
         <span className={styles.leftCardText}>Всего вакансий</span>
         <span className={styles.leftCardCount}>{count}</span>

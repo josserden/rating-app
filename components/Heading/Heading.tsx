@@ -1,13 +1,9 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { HeadingProps } from './Heading.props';
 import styles from './Heading.module.css';
 import classNames from 'classnames';
 
-export const Heading = ({
-  tag,
-  children,
-  className,
-}: HeadingProps): JSX.Element => {
+export const Heading: FC<HeadingProps> = ({ tag, children, className }) => {
   switch (tag) {
     case 'h1':
       return <h1 className={classNames(className, styles.h1)}>{children}</h1>;

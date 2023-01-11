@@ -1,13 +1,13 @@
-import { MagnifyingGlassIcon } from '@heroicons/react/24/solid';
-import classNames from 'classnames';
+import React, { FC, ChangeEvent, KeyboardEvent, useState } from 'react';
 import { useRouter } from 'next/router';
-import React, { ChangeEvent, KeyboardEvent, useState } from 'react';
+import classNames from 'classnames';
+import { MagnifyingGlassIcon } from '@heroicons/react/24/solid';
 import { routes } from 'helpers/routes';
 import { Button, Input } from '..';
 import { SearchProps } from './Search.props';
 import styles from './Search.module.css';
 
-export const Search = ({ className, ...props }: SearchProps): JSX.Element => {
+export const Search: FC<SearchProps> = ({ className, ...props }) => {
   const [query, setQuery] = useState<string>('');
   const router = useRouter();
 

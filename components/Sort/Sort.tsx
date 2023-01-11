@@ -2,18 +2,14 @@ import classNames from 'classnames';
 import { SortEnum, SortProps } from './Sort.props';
 import { Bars3BottomRightIcon } from '@heroicons/react/24/outline';
 import styles from './Sort.module.css';
+import { FC } from 'react';
 
 const sortData = [
   { id: SortEnum.Rating, type: SortEnum.Rating, text: 'По рейтингу' },
   { id: SortEnum.Price, type: SortEnum.Price, text: 'По цене' },
 ];
 
-export const Sort = ({
-  sort,
-  setSort,
-  className,
-  ...props
-}: SortProps): JSX.Element => {
+export const Sort: FC<SortProps> = ({ sort, setSort, className, ...props }) => {
   return (
     <div className={classNames(styles.sortWrapper, className)} {...props}>
       {sortData &&

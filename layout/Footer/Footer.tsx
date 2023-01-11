@@ -1,9 +1,10 @@
+import { FC } from 'react';
 import classNames from 'classnames';
 import { Paragraph } from '../../components';
 import { FooterProps } from './Footer.props';
 import styles from './Footer.module.css';
 
-export const Footer = ({ className, ...props }: FooterProps): JSX.Element => {
+export const Footer: FC<FooterProps> = ({ className, ...props }) => {
   return (
     <footer className={classNames(styles.footer, className)} {...props}>
       <Paragraph className={styles.footerText}>

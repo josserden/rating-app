@@ -1,15 +1,16 @@
 import classNames from 'classnames';
+import { FC } from 'react';
 import styles from './Tag.module.css';
 import { TagProps } from './Tag.props';
 
-export const Tag = ({
+export const Tag: FC<TagProps> = ({
   size = 'md',
   color = 'ghost',
   children,
   className,
   href,
   ...props
-}: TagProps): JSX.Element => {
+}) => {
   return (
     <div
       className={classNames(styles.tag, className, {

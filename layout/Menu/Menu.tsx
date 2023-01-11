@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { FC, useContext } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { motion, useReducedMotion } from 'framer-motion';
@@ -8,7 +8,7 @@ import { FirstLevelMenu, PageItem } from 'interfaces/menu.interface';
 import { firstLevelMenu } from 'helpers/firstLevelMenu';
 import styles from './Menu.module.css';
 
-export const Menu = (): JSX.Element => {
+export const Menu: FC = () => {
   const { menu, setMenu, firstCategory } = useContext(AppContext);
   const router = useRouter();
   const shouldReduceMotion = useReducedMotion();

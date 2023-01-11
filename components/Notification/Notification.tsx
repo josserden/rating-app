@@ -1,15 +1,15 @@
-import { NotificationProps } from './Notification.props';
-import { XMarkIcon } from '@heroicons/react/24/solid';
+import { FC } from 'react';
 import classNames from 'classnames';
-import { ButtonIcon } from '..';
+import { XMarkIcon } from '@heroicons/react/24/solid';
+import { NotificationProps } from './Notification.props';
 
-export const Notification = ({
+export const Notification: FC<NotificationProps> = ({
   title,
   message,
   status = 'success',
   onClose,
   ...props
-}: NotificationProps): JSX.Element => {
+}) => {
   return (
     <div
       className={`${

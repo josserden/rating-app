@@ -1,13 +1,13 @@
 import classNames from 'classnames';
 import { TextAreaProps } from './TextArea.props';
 import styles from './TextArea.module.css';
-import { ForwardedRef, forwardRef } from 'react';
+import { FC, ForwardedRef, forwardRef } from 'react';
 
-export const TextArea = forwardRef(
+export const TextArea: FC = forwardRef(
   (
     { className, error, ...props }: TextAreaProps,
     ref: ForwardedRef<HTMLTextAreaElement>
-  ): JSX.Element => {
+  ) => {
     return (
       <div className="relative">
         <textarea

@@ -9,16 +9,16 @@ import {
 import { SortEnum } from '@components/Sort/Sort.props';
 import { sortReducer } from 'helpers/sortReducer';
 import { TopLevelCategory } from 'interfaces/course.interface';
-import { useEffect, useReducer } from 'react';
+import { FC, useEffect, useReducer } from 'react';
 import { RatingPageProps } from './RatingPageComponent.props';
 import styles from './RatingPageComponent.module.css';
 import { useReducedMotion } from 'framer-motion';
 
-export const RatingPageComponent = ({
+export const RatingPageComponent: FC<RatingPageProps> = ({
   page,
   products,
   firstCategory,
-}: RatingPageProps): JSX.Element => {
+}) => {
   const [{ products: sortedProducts, sort }, dispatch] = useReducer(
     sortReducer,
     {
