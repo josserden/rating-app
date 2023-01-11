@@ -15,64 +15,12 @@ import { MenuItem } from 'interfaces/menu.interface';
 
 axios.defaults.baseURL = process.env.NEXT_PUBLIC_DOMAIN;
 
-const Home = ({ menu, firstCategory }: HomeProps): JSX.Element => {
-  const [rating, setRating] = useState<number>(4);
-
+const Home = () => {
   return (
     <>
       <Heading tag="h1" className="mb-5">
-        Курсы по Photoshop
+        Home Page
       </Heading>
-
-      <div className="hover:text-red-600 focus:text-red-500">
-        text for test focus
-      </div>
-
-      <Input id="name" placeholder="Name" />
-      <Input id="title" placeholder="Title" />
-      <TextArea placeholder="Enter your feedback" />
-
-      <Heading tag="h3">Профессия дизайнер от 0 до PRO</Heading>
-
-      <Heading tag="h2">Вакансии - Photoshop</Heading>
-
-      <Button
-        appearance="ghost"
-        arrow="down"
-        onClick={() => console.log('Click')}
-      >
-        Кнопка
-      </Button>
-
-      <Button appearance="primary" arrow="right">
-        Кнопка
-      </Button>
-
-      <Button appearance="ghost" onClick={() => console.log('Click')}>
-        Кнопка
-      </Button>
-
-      <Paragraph size="sm">Маленький</Paragraph>
-      <Paragraph>Средний</Paragraph>
-      <Paragraph size="xl">Большой</Paragraph>
-
-      <Tag size="sm">маленький</Tag>
-
-      <Tag size="sm" color="red">
-        маленький
-      </Tag>
-
-      <Tag size="sm" color="green">
-        маленький
-      </Tag>
-
-      <Tag color="primary">маленький</Tag>
-
-      <Tag color="primary" href="https://github.com/josserden">
-        ссылка
-      </Tag>
-
-      <Rating rating={rating} isEditable setRating={setRating} />
     </>
   );
 };
