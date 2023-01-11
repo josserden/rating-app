@@ -15,31 +15,26 @@ import type {
 import { TopLevelCategory, TopPageModel } from 'interfaces/course.interface';
 import { MenuItem } from 'interfaces/menu.interface';
 import { ProductModel } from 'interfaces/product.interface';
-import { Loader } from '@components/index';
 
 axios.defaults.baseURL = process.env.NEXT_PUBLIC_DOMAIN;
 
 const RatingPage: FC<RatingPageProps> = ({ firstCategory, page, products }) => {
+  if (!page || !products) return <></>;
+
   return (
     <>
-      {page && products ? (
-        <>
-          <Head>
-            <title>{page.metaTitle}</title>
-            <meta name="description" content={page.metaDescription} />
-            <meta property="og:title" content={page.metaTitle} />
-            <meta property="og:description" content={page.metaDescription} />
-          </Head>
+      <Head>
+        <title>{page.metaTitle}</title>
+        <meta name="description" content={page.metaDescription} />
+        <meta property="og:title" content={page.metaTitle} />
+        <meta property="og:description" content={page.metaDescription} />
+      </Head>
 
-          <RatingPageComponent
-            firstCategory={firstCategory}
-            page={page}
-            products={products}
-          />
-        </>
-      ) : (
-        <Loader />
-      )}
+      <RatingPageComponent
+        firstCategory={firstCategory}
+        page={page}
+        products={products}
+      />
     </>
   );
 };

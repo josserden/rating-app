@@ -5,7 +5,6 @@ export * from './Card/Card';
 export * from './CardData/CardData';
 export * from './Heading/Heading';
 export * from './Input/Input';
-export * from './Loader/Loader';
 export * from './Logo/Logo';
 export * from './Notification/Notification';
 export * from './Paragraph/Paragraph';
